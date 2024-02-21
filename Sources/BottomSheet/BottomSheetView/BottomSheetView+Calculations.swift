@@ -196,24 +196,6 @@ internal extension BottomSheetView {
 #endif
     }
     
-    // For `backgroundBlur`
-    func opacity(with geometry: GeometryProxy) -> Double {
-        if self.configuration.isBackgroundBlurEnabled {
-            // Calculate background blur relative to BottomSheet height
-            return min(
-                max(
-                    Double(
-                        self.height(with: geometry) / self.maxBottomSheetHeight(with: geometry)
-                    ),
-                    0
-                ),
-                1
-            )
-        } else {
-            return 0
-        }
-    }
-    
     // For `tapToDismiss`
     func tapToDismissAction() {
         // Only dismiss sheet when `tapToDismiss` is enabled

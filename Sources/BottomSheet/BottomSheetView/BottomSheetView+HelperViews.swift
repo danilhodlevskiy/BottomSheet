@@ -9,14 +9,9 @@ import SwiftUI
 import Combine
 
 internal extension BottomSheetView {
-    func fullScreenBackground(with geometry: GeometryProxy) -> some View {
+    func fullScreenBackground() -> some View {
         VisualEffectView(visualEffect: self.configuration.backgroundBlurMaterial)
-            .opacity(
-                // When `backgroundBlur` is enabled the opacity is calculated
-                // based on the current height of the BottomSheet relative to its maximum height
-                // Otherwise it is 0
-                self.opacity(with: geometry)
-            )
+            .opacity(self.configuration.backgroundBlurOpacity)
         // Make the background fill the whole screen including safe area
             .frame(
                 maxWidth: .infinity,
@@ -181,7 +176,8 @@ internal extension BottomSheetView {
                 // Main content
                 self.mainContent
                 // Make the main content drag-able if content drag is enabled
-                    .gesture(
+                // highPriorityGesture is required to make dragging the bottom sheet work even when user starts dragging on buttons or other pressable items
+                    .highPriorityGesture(
                         self.configuration.isContentDragEnabled && self.configuration.isResizable ?
                         self.dragGesture(with: geometry) : nil
                     )

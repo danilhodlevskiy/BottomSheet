@@ -37,6 +37,7 @@ internal class BottomSheetConfiguration: Equatable {
         blendDuration: 1
     )
     var backgroundBlurMaterial: VisualEffect = .system
+    var backgroundBlurOpacity: CGFloat = 0.2
     var backgroundViewID: UUID?
     var backgroundView: AnyView?
     var dragIndicatorAction: ((GeometryProxy) -> Void)?
