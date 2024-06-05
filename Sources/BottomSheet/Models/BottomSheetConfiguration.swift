@@ -15,6 +15,7 @@ internal class BottomSheetConfiguration: Equatable {
     ) -> Bool {
         return lhs.animation == rhs.animation &&
         lhs.backgroundBlurMaterial == rhs.backgroundBlurMaterial &&
+        lhs.backgroundBlurOpacity == rhs.backgroundBlurOpacity &&
         lhs.backgroundViewID == rhs.backgroundViewID &&
         lhs.dragIndicatorColor == rhs.dragIndicatorColor &&
         lhs.isAppleScrollBehaviorEnabled == rhs.isAppleScrollBehaviorEnabled &&
