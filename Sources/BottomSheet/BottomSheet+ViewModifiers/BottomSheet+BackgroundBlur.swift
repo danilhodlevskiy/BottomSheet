@@ -36,4 +36,10 @@ public extension BottomSheet {
         self.configuration.backgroundBlurMaterial = material
         return self
     }
+    
+    /// Change the opacity of the blur layer
+    func backgroundBlurOpacity(_ opacity: CGFloat) -> BottomSheet {
+        self.configuration.backgroundBlurOpacity = opacity
+        return self
+    }
 }
