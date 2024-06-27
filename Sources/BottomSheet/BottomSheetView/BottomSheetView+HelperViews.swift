@@ -24,7 +24,7 @@ internal extension BottomSheetView {
             .onTapGesture(perform: self.tapToDismissAction)
         // Make the background transition via opacity
             .transition(.opacity)
-            //.zIndex(1)
+            .zIndex(1)
     }
     
     func bottomSheet(with geometry: GeometryProxy) -> some View {
@@ -98,7 +98,6 @@ internal extension BottomSheetView {
                         7.5
                     )
                     .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
                 // Make the drag indicator drag-able
                     .gesture(
                         self.dragGesture(with: geometry)
