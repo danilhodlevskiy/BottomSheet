@@ -98,10 +98,6 @@ internal extension BottomSheetView {
                         7.5
                     )
                     .frame(maxWidth: .infinity)
-                // Make the drag indicator drag-able
-                    .gesture(
-                        self.dragGesture(with: geometry)
-                    )
             })
         // Make it borderless for Mac
         .buttonStyle(.borderless)
@@ -109,6 +105,11 @@ internal extension BottomSheetView {
         .transaction { transform in
             transform.disablesAnimations = true
         }
+        .frame(height: 500)
+        // Make the drag indicator drag-able
+        .gesture(
+            self.dragGesture(with: geometry)
+        )
 
         .zIndex(99)
     }
