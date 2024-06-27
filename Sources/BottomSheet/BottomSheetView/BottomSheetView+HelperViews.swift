@@ -26,7 +26,6 @@ internal extension BottomSheetView {
             .transition(.opacity)
     }
     
-    @available(iOS 15.0, *)
     func bottomSheet(with geometry: GeometryProxy) -> some View {
         VStack(
             alignment: .center,
