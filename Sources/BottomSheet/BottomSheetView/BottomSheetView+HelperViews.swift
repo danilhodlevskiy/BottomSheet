@@ -99,6 +99,7 @@ internal extension BottomSheetView {
                     )
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
+                    .background(Color.white.opacity(0.01))
                     // Make the drag indicator drag-able
                     .gesture(
                         self.dragGesture(with: geometry)
