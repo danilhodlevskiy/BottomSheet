@@ -24,7 +24,6 @@ internal extension BottomSheetView {
             .onTapGesture(perform: self.tapToDismissAction)
         // Make the background transition via opacity
             .transition(.opacity)
-            .zIndex(1)
     }
     
     func bottomSheet(with geometry: GeometryProxy) -> some View {
@@ -80,6 +79,7 @@ internal extension BottomSheetView {
         Button(
             action: {
                 self.dragIndicatorAction(with: geometry)
+                self.tapToDismissAction()
             },
             label: {
                 Capsule()
