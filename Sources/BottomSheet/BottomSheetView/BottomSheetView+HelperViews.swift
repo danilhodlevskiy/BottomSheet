@@ -98,8 +98,7 @@ internal extension BottomSheetView {
                         7.5
                     )
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 14)
-                    .padding(.bottom, 4)
+                    .padding(.top, 8)
                     .background(Color.white.opacity(0.01))
                     // Make the drag indicator drag-able
                     .gesture(
