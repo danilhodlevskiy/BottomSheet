@@ -101,6 +101,8 @@ internal extension BottomSheetView {
                     .gesture(
                         self.dragGesture(with: geometry)
                     )
+                    .frame(maxWidth: .infinity)
+                    .background(Color.yellow)
             })
         // Make it borderless for Mac
         .buttonStyle(.borderless)
@@ -108,8 +110,7 @@ internal extension BottomSheetView {
         .transaction { transform in
             transform.disablesAnimations = true
         }
-        .frame(maxWidth: .infinity)
-        .background(Color.yellow)
+
         .zIndex(99)
     }
     
