@@ -31,6 +31,11 @@ internal extension BottomSheetView {
             alignment: .center,
             spacing: 0
         ) {
+            // Drag indicator on the top (iPhone and iPad not floating)
+            if self.configuration.isResizable && self.configuration.isDragIndicatorShown && !self.isIPadFloatingOrMac {
+                self.dragIndicator( with: geometry)
+            }
+            
             // The header an main content
             self.bottomSheetContent(with: geometry)
             
@@ -68,12 +73,6 @@ internal extension BottomSheetView {
         .transition(.move(
             edge: self.isIPadFloatingOrMac ? .top : .bottom
         ))
-        .overlay(alignment: .top) {
-            // Drag indicator on the top (iPhone and iPad not floating)
-            if self.configuration.isResizable && self.configuration.isDragIndicatorShown && !self.isIPadFloatingOrMac {
-                self.dragIndicator( with: geometry)
-            }
-        }
     }
     
     func dragIndicator(with geometry: GeometryProxy) -> some View {
@@ -99,6 +98,11 @@ internal extension BottomSheetView {
                         7.5
                     )
                     .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    // Make the drag indicator drag-able
+                    .gesture(
+                        self.dragGesture(with: geometry)
+                    )
             })
         // Make it borderless for Mac
         .buttonStyle(.borderless)
@@ -106,12 +110,6 @@ internal extension BottomSheetView {
         .transaction { transform in
             transform.disablesAnimations = true
         }
-        .frame(height: 500, alignment: .top)
-        // Make the drag indicator drag-able
-        .gesture(
-            self.dragGesture(with: geometry)
-        )
-
         .zIndex(99)
     }
     
