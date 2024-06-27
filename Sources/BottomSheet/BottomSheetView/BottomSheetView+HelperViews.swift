@@ -97,12 +97,12 @@ internal extension BottomSheetView {
                         .bottom,
                         7.5
                     )
+                    .frame(maxWidth: .infinity)
+                    .background(Color.yellow)
                 // Make the drag indicator drag-able
                     .gesture(
                         self.dragGesture(with: geometry)
                     )
-                    .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
             })
         // Make it borderless for Mac
         .buttonStyle(.borderless)
