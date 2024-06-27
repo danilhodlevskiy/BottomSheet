@@ -26,16 +26,12 @@ internal extension BottomSheetView {
             .transition(.opacity)
     }
     
+    @available(iOS 15.0, *)
     func bottomSheet(with geometry: GeometryProxy) -> some View {
         VStack(
             alignment: .center,
             spacing: 0
         ) {
-            // Drag indicator on the top (iPhone and iPad not floating)
-            if self.configuration.isResizable && self.configuration.isDragIndicatorShown && !self.isIPadFloatingOrMac {
-                self.dragIndicator( with: geometry)
-            }
-            
             // The header an main content
             self.bottomSheetContent(with: geometry)
             
@@ -49,6 +45,12 @@ internal extension BottomSheetView {
         // on iPad floating and Mac to the bottom for transition
         // to work correctly. Don't set height if `.dynamic...`
         // and currently not dragging
+        .overlay(alignment: .top) {
+            // Drag indicator on the top (iPhone and iPad not floating)
+            if self.configuration.isResizable && self.configuration.isDragIndicatorShown && !self.isIPadFloatingOrMac {
+                self.dragIndicator( with: geometry)
+            }
+        }
         .frame(
             width: self.width(with: geometry),
             height: self.bottomSheetPosition.isDynamic && self.translation == 0 ? nil : self.height(with: geometry),
