@@ -106,8 +106,7 @@ internal extension BottomSheetView {
         .transaction { transform in
             transform.disablesAnimations = true
         }
-        .frame(height: 500)
-        .background(Color.yellow)
+        .frame(height: 500, alignment: .top)
         // Make the drag indicator drag-able
         .gesture(
             self.dragGesture(with: geometry)
