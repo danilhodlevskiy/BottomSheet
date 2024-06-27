@@ -24,7 +24,7 @@ internal extension BottomSheetView {
             .onTapGesture(perform: self.tapToDismissAction)
         // Make the background transition via opacity
             .transition(.opacity)
-            .zIndex(98)
+            //.zIndex(1)
     }
     
     func bottomSheet(with geometry: GeometryProxy) -> some View {
