@@ -107,6 +107,7 @@ internal extension BottomSheetView {
         .transaction { transform in
             transform.disablesAnimations = true
         }
+        .zIndex(99)
     }
     
     func bottomSheetContent(with geometry: GeometryProxy) -> some View {
